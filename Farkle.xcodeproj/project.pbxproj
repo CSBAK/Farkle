@@ -14,6 +14,7 @@
 		407D18F11B0E5E7F009F795F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 407D18F01B0E5E7F009F795F /* Images.xcassets */; };
 		407D18F41B0E5E7F009F795F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 407D18F21B0E5E7F009F795F /* LaunchScreen.xib */; };
 		407D19001B0E5E7F009F795F /* FarkleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 407D18FF1B0E5E7F009F795F /* FarkleTests.m */; };
+		407D190B1B0E5EAB009F795F /* DieLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 407D190A1B0E5EAB009F795F /* DieLabel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		407D18F91B0E5E7F009F795F /* FarkleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FarkleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		407D18FE1B0E5E7F009F795F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		407D18FF1B0E5E7F009F795F /* FarkleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FarkleTests.m; sourceTree = "<group>"; };
+		407D19091B0E5EAB009F795F /* DieLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DieLabel.h; path = ../DieLabel.h; sourceTree = "<group>"; };
+		407D190A1B0E5EAB009F795F /* DieLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DieLabel.m; path = ../DieLabel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +86,8 @@
 			children = (
 				407D18E71B0E5E7E009F795F /* AppDelegate.h */,
 				407D18E81B0E5E7E009F795F /* AppDelegate.m */,
+				407D19091B0E5EAB009F795F /* DieLabel.h */,
+				407D190A1B0E5EAB009F795F /* DieLabel.m */,
 				407D18EA1B0E5E7E009F795F /* ViewController.h */,
 				407D18EB1B0E5E7E009F795F /* ViewController.m */,
 				407D18ED1B0E5E7E009F795F /* Main.storyboard */,
@@ -222,6 +227,7 @@
 				407D18EC1B0E5E7E009F795F /* ViewController.m in Sources */,
 				407D18E91B0E5E7E009F795F /* AppDelegate.m in Sources */,
 				407D18E61B0E5E7E009F795F /* main.m in Sources */,
+				407D190B1B0E5EAB009F795F /* DieLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

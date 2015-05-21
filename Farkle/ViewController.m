@@ -7,21 +7,33 @@
 //
 
 #import "ViewController.h"
+#import "DieLabel.h"
 
-@interface ViewController ()
+@interface ViewController () <DieDelegation>
+@property (strong, nonatomic) IBOutletCollection(DieLabel) NSArray *labelCollection;
+@property NSMutableArray *dice;
 
 @end
 
 @implementation ViewController
+- (IBAction)onRollButtonPressed:(UIButton *)sender {
+    for (DieLabel *label in self.labelCollection) {
+        [label rollDice];
+    }
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    for (DieLabel *label in self.labelCollection) {
+        label.delegate = self;
+    }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)dieDelegation:(id)die {
+    DieLabel *dieLabel = die;
+    dieLabel.backgroundColor = [UIColor blueColor];
 }
+
+
 
 @end
