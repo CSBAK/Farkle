@@ -34,6 +34,4 @@
     dieLabel.backgroundColor = [UIColor blueColor];
 }
 
-
-
 @end
