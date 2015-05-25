@@ -17,19 +17,14 @@
 @property (weak, nonatomic) IBOutlet UILabel *userTwoScore;
 @property (weak, nonatomic) IBOutlet UIButton *rollButton;
 @property BOOL playerOneScoring;
-@property int score;
+@property int playerOneScore;
+@property int playerTwoScore;
+@property int roundScore;
+@property int selectedCount;
 
 @end
 
 @implementation ViewController
-
-- (IBAction)onRollButtonPressed:(UIButton *)sender {
-    for (DieLabel *label in self.labelCollection) {
-        if ([label.backgroundColor isEqual:[UIColor redColor]]) {
-            [label rollDice];
-        }
-    }
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -47,6 +42,16 @@
     self.playerOneScoring = YES;
 }
 
+
+- (IBAction)onRollButtonPressed:(UIButton *)sender {
+    for (DieLabel *label in self.labelCollection) {
+        if ([label.backgroundColor isEqual:[UIColor redColor]]) {
+            [label rollDice];
+        }
+    }
+}
+
+
 -(void)dieDelegation:(id)die {
     DieLabel *label = die;
     label.backgroundColor = [UIColor lightGrayColor];
@@ -54,19 +59,44 @@
 }
 
 -(void)updateScore {
-    self.score = 0;
+    self.selectedCount = 0;
+    self.roundScore = 0;
+
     for (DieLabel *label in self.labelCollection) {
         if ([label.text isEqualToString:@"1"] && label.backgroundColor == [UIColor lightGrayColor]) {
-            self.score = self.score + 100;
+            self.roundScore = self.roundScore + 100;
         } else if ([label.text isEqualToString:@"5"] && label.backgroundColor == [UIColor lightGrayColor]) {
-            self.score = self.score + 50;
+            self.roundScore = self.roundScore + 50;
         }
     }
-    if (self.playerOneScoring == YES) {
-        self.userScore.text = [NSString stringWithFormat:@"P1 Score: %i", self.score];
+    if (self.playerOneScoring) {
+        self.userScore.text = [NSString stringWithFormat:@"P1 Score: %i", self.roundScore];
     } else {
-        self.userTwoScore.text = [NSString stringWithFormat:@"P2 Score: %i", self.score];
+        self.userTwoScore.text = [NSString stringWithFormat:@"P2 Score: %i", self.roundScore];
+    }
+    [self allSelected];
+}
+
+
+// Method just determines if all labels are selected, then changes them back to red and switches the scoring player
+-(void)allSelected {
+    for (DieLabel *label in self.labelCollection) {
+        if (label.backgroundColor == [UIColor lightGrayColor]) {
+            self.selectedCount = self.selectedCount + 1;
+        }
+        if (self.selectedCount == 6) {
+            self.playerOneScore = self.roundScore + self.playerOneScore;
+            self.playerOneScoring = !self.playerOneScoring;
+            for (DieLabel *label in self.labelCollection) {
+                label.backgroundColor = [UIColor redColor];
+                [label rollDice];
+            }
+        }
     }
 }
+
+//-(void)determineWinner {
+//
+//}
 
 @end
