@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *userScore;
 @property (weak, nonatomic) IBOutlet UILabel *userTwoScore;
 @property (weak, nonatomic) IBOutlet UIButton *rollButton;
+@property (weak, nonatomic) IBOutlet UILabel *playerLabel;
+
 @property BOOL playerOneScoring;
 @property int playerOneScore;
 @property int playerOneTotal;
@@ -41,6 +43,7 @@
     self.rollButton.layer.borderWidth = 1.0;
     self.rollButton.layer.borderColor = [[UIColor grayColor]CGColor];
     self.playerOneScoring = YES;
+    self.view.backgroundColor = [UIColor yellowColor];
 }
 
 
@@ -88,8 +91,12 @@
         if (self.selectedCount == 6) {
             if (self.playerOneScoring) {
                 self.playerOneScore = self.roundScore + self.playerOneScore;
+                self.playerLabel.text = @"Player 2 is up";
+                self.view.backgroundColor = [UIColor greenColor];
             } else {
                 self.playerTwoScore = self.roundScore + self.playerTwoScore;
+                self.playerLabel.text = @"Player 1 is up";
+                self.view.backgroundColor = [UIColor yellowColor];
             }
             self.playerOneScoring = !self.playerOneScoring;
             for (DieLabel *label in self.labelCollection) {
@@ -103,5 +110,9 @@
 //-(void)determineWinner {
 //
 //}
+
+// Need to enable and disable the roll button until they select one label
+
+// Need to display whose turn it is
 
 @end

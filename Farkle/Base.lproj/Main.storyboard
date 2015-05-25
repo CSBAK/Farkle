@@ -99,8 +99,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="P2 Score: " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jig-ge-CBD">
-                                <rect key="frame" x="224" y="20" width="80" height="21"/>
-                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="224" y="28" width="80" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="3gl-84-bmY"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="HSj-5w-VHE"/>
@@ -109,9 +108,19 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player 1 is up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bjB-sZ-9x6">
+                                <rect key="frame" x="49" y="308" width="222" height="51"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="4TC-0U-n48"/>
+                                    <constraint firstAttribute="width" constant="222" id="gqU-1D-Lf8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="P1 Score: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bMh-su-6aS">
-                                <rect key="frame" x="16" y="20" width="80" height="21"/>
-                                <color key="backgroundColor" red="1" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="16" y="28" width="80" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="GC7-LA-2Uc"/>
                                 </constraints>
@@ -123,17 +132,19 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="oSR-hq-fgN" firstAttribute="top" secondItem="p7l-G9-xhE" secondAttribute="bottom" constant="13" id="44n-rI-av6"/>
-                            <constraint firstItem="bMh-su-6aS" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="6jk-Mu-qw3"/>
+                            <constraint firstItem="bMh-su-6aS" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" id="6jk-Mu-qw3"/>
                             <constraint firstItem="wKE-B0-DaI" firstAttribute="baseline" secondItem="p7l-G9-xhE" secondAttribute="baseline" id="7Wb-Nw-cy1"/>
                             <constraint firstItem="kCx-Pb-TUx" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="58" id="CMb-s1-7gJ"/>
-                            <constraint firstItem="Jig-ge-CBD" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="DUG-Gk-tzN"/>
+                            <constraint firstItem="Jig-ge-CBD" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" id="DUG-Gk-tzN"/>
                             <constraint firstItem="uoC-lv-tff" firstAttribute="leading" secondItem="oSR-hq-fgN" secondAttribute="trailing" constant="21" id="HIv-CO-Y44"/>
                             <constraint firstItem="p7l-G9-xhE" firstAttribute="leading" secondItem="wKE-B0-DaI" secondAttribute="trailing" constant="21" id="I9c-nr-aUo"/>
                             <constraint firstItem="IFc-2k-3VH" firstAttribute="baseline" secondItem="p7l-G9-xhE" secondAttribute="baseline" id="O9h-T8-6tD"/>
                             <constraint firstItem="WN8-th-nB8" firstAttribute="top" secondItem="wKE-B0-DaI" secondAttribute="bottom" constant="13" id="QV5-4X-VYP"/>
                             <constraint firstAttribute="centerX" secondItem="kCx-Pb-TUx" secondAttribute="centerX" id="TV6-Nv-JrV"/>
                             <constraint firstItem="uoC-lv-tff" firstAttribute="top" secondItem="IFc-2k-3VH" secondAttribute="bottom" constant="13" id="ddy-5h-9i0"/>
+                            <constraint firstAttribute="centerX" secondItem="bjB-sZ-9x6" secondAttribute="centerX" id="fjj-2i-mjo"/>
                             <constraint firstAttribute="centerX" secondItem="oSR-hq-fgN" secondAttribute="centerX" id="hDQ-gM-N1o"/>
+                            <constraint firstItem="bjB-sZ-9x6" firstAttribute="top" secondItem="uoC-lv-tff" secondAttribute="bottom" constant="73" id="hVf-I3-93Z"/>
                             <constraint firstItem="oSR-hq-fgN" firstAttribute="leading" secondItem="WN8-th-nB8" secondAttribute="trailing" constant="21" id="k2x-kt-M7j"/>
                             <constraint firstItem="bMh-su-6aS" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="l5d-St-Xfb"/>
                             <constraint firstItem="p7l-G9-xhE" firstAttribute="top" secondItem="kCx-Pb-TUx" secondAttribute="bottom" constant="21" id="tn4-s1-EMR"/>
@@ -143,6 +154,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="playerLabel" destination="bjB-sZ-9x6" id="VCO-xj-OfZ"/>
                         <outlet property="rollButton" destination="kCx-Pb-TUx" id="QND-V7-9DV"/>
                         <outlet property="userScore" destination="bMh-su-6aS" id="1uw-Ud-OAP"/>
                         <outlet property="userTwoScore" destination="Jig-ge-CBD" id="o6X-1s-W4Y"/>
