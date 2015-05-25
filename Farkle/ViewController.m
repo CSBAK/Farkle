@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *rollButton;
 @property BOOL playerOneScoring;
 @property int playerOneScore;
+@property int playerOneTotal;
 @property int playerTwoScore;
 @property int roundScore;
 @property int selectedCount;
@@ -70,9 +71,9 @@
         }
     }
     if (self.playerOneScoring) {
-        self.userScore.text = [NSString stringWithFormat:@"P1 Score: %i", self.roundScore];
+        self.userScore.text = [NSString stringWithFormat:@"P1 Score: %i", self.roundScore + self.playerOneScore];
     } else {
-        self.userTwoScore.text = [NSString stringWithFormat:@"P2 Score: %i", self.roundScore];
+        self.userTwoScore.text = [NSString stringWithFormat:@"P2 Score: %i", self.roundScore + self.playerTwoScore];
     }
     [self allSelected];
 }
@@ -85,7 +86,11 @@
             self.selectedCount = self.selectedCount + 1;
         }
         if (self.selectedCount == 6) {
-            self.playerOneScore = self.roundScore + self.playerOneScore;
+            if (self.playerOneScoring) {
+                self.playerOneScore = self.roundScore + self.playerOneScore;
+            } else {
+                self.playerTwoScore = self.roundScore + self.playerTwoScore;
+            }
             self.playerOneScoring = !self.playerOneScoring;
             for (DieLabel *label in self.labelCollection) {
                 label.backgroundColor = [UIColor redColor];
