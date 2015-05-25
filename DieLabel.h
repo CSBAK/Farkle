@@ -15,8 +15,6 @@
 
 -(void)dieDelegation:(id)die;
 
-//-(void)anotherMethod;
-
 @end
 
 //////////////// gets implemented in THIS class's .m file
