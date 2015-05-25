@@ -28,6 +28,10 @@
 -(void)rollDice {
     int randomNum = arc4random_uniform(6) + 1;
     self.text = [NSString stringWithFormat:@"%i", randomNum];
+    // sets image with random number
+    UIImage *img = [UIImage imageNamed:[NSString stringWithFormat:@"DieValue%i",randomNum]];
+    self.backgroundColor = [UIColor colorWithPatternImage:img];
+
 }
 
 @end

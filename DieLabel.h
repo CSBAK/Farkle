@@ -21,6 +21,7 @@
 @interface DieLabel : UILabel
 
 @property (nonatomic, assign) id <DieDelegation> delegate;
+@property BOOL dieSelected;
 
 -(void)rollDice;
 

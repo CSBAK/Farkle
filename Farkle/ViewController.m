@@ -9,14 +9,14 @@
 #import "ViewController.h"
 #import "DieLabel.h"
 
-@interface ViewController () <DieDelegation>
+@interface ViewController () <DieDelegation, UIAlertViewDelegate>
 
 @property (strong, nonatomic) IBOutletCollection(DieLabel) NSArray *labelCollection;
-//@property NSMutableArray *dice;
 @property (weak, nonatomic) IBOutlet UILabel *userScore;
 @property (weak, nonatomic) IBOutlet UILabel *userTwoScore;
 @property (weak, nonatomic) IBOutlet UIButton *rollButton;
 @property (weak, nonatomic) IBOutlet UILabel *playerLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 @property BOOL playerOneScoring;
 @property int playerOneScore;
@@ -33,43 +33,50 @@
     [super viewDidLoad];
     for (DieLabel *label in self.labelCollection) {
         label.delegate = self;
-        label.layer.cornerRadius = label.bounds.size.width / 6;
+        label.layer.cornerRadius = label.bounds.size.width / 10;
         label.layer.masksToBounds = YES;
-        label.layer.borderWidth = 1.0;
-        label.layer.borderColor = [[UIColor grayColor]CGColor];
-        label.backgroundColor = [UIColor redColor];
+        label.dieSelected = NO;
+        [label rollDice];
     }
     self.rollButton.layer.cornerRadius = self.rollButton.bounds.size.width / 10;
     self.rollButton.layer.borderWidth = 1.0;
     self.rollButton.layer.borderColor = [[UIColor grayColor]CGColor];
     self.playerOneScoring = YES;
-    self.view.backgroundColor = [UIColor yellowColor];
+    self.playerLabel.layer.cornerRadius = self.playerLabel.bounds.size.width / 10;
+    self.playerLabel.layer.masksToBounds = YES;
+    self.playerLabel.layer.borderWidth = 1.0;
+    self.playerLabel.layer.borderColor = [[UIColor grayColor]CGColor];
+    self.imageView.image = [UIImage imageNamed:@"dark_green_felt"];
+    self.playerLabel.backgroundColor = [UIColor greenColor];
 }
 
 
 - (IBAction)onRollButtonPressed:(UIButton *)sender {
     for (DieLabel *label in self.labelCollection) {
-        if ([label.backgroundColor isEqual:[UIColor redColor]]) {
+        if (!label.dieSelected) {
             [label rollDice];
         }
     }
+    self.rollButton.enabled = NO;
 }
 
-
+// Tapping on die labels
 -(void)dieDelegation:(id)die {
     DieLabel *label = die;
-    label.backgroundColor = [UIColor lightGrayColor];
+    UIImage *img = [UIImage imageNamed:[NSString stringWithFormat:@"DieValue%@Reverse",label.text]];
+    label.backgroundColor = [UIColor colorWithPatternImage:img];
+    label.dieSelected = YES;
+    self.rollButton.enabled = YES;
     [self updateScore];
 }
 
 -(void)updateScore {
     self.selectedCount = 0;
     self.roundScore = 0;
-
     for (DieLabel *label in self.labelCollection) {
-        if ([label.text isEqualToString:@"1"] && label.backgroundColor == [UIColor lightGrayColor]) {
+        if ([label.text isEqualToString:@"1"] && label.dieSelected) {
             self.roundScore = self.roundScore + 100;
-        } else if ([label.text isEqualToString:@"5"] && label.backgroundColor == [UIColor lightGrayColor]) {
+        } else if ([label.text isEqualToString:@"5"] && label.dieSelected) {
             self.roundScore = self.roundScore + 50;
         }
     }
@@ -79,40 +86,60 @@
         self.userTwoScore.text = [NSString stringWithFormat:@"P2 Score: %i", self.roundScore + self.playerTwoScore];
     }
     [self allSelected];
+    [self checkForWinner];
 }
 
+-(void)checkForWinner {
+    UIAlertView *alert = [UIAlertView new];
+    [alert addButtonWithTitle:@"New Game"];
+    alert.delegate = self;
+    if (self.playerOneScore >= 5000) {
+        alert.title = @"Player One Wins!";
+        [alert show];
+    } else if (self.playerTwoScore >= 5000) {
+        alert.title = @"Player Two Wins!";
+        [alert show];
+    }
+}
 
-// Method just determines if all labels are selected, then changes them back to red and switches the scoring player
+// Starts new game at alert view button pressed
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0) {
+        self.userScore.text = [NSString stringWithFormat:@"P1 Score: 0"];
+        self.userTwoScore.text = [NSString stringWithFormat:@"P2 Score: 0"];
+        self.playerOneScore = 0;
+        self.playerTwoScore = 0;
+    }
+}
+
+// Method just determines if all labels are selected. If so, dice are rolled and switches the scoring player
 -(void)allSelected {
     for (DieLabel *label in self.labelCollection) {
-        if (label.backgroundColor == [UIColor lightGrayColor]) {
+        if (label.dieSelected) {
             self.selectedCount = self.selectedCount + 1;
         }
         if (self.selectedCount == 6) {
             if (self.playerOneScoring) {
                 self.playerOneScore = self.roundScore + self.playerOneScore;
                 self.playerLabel.text = @"Player 2 is up";
-                self.view.backgroundColor = [UIColor greenColor];
+                self.imageView.image = [UIImage imageNamed:@"blue_felt"];
+                self.playerLabel.backgroundColor = [UIColor blueColor];
+                self.playerLabel.textColor = [UIColor whiteColor];
             } else {
                 self.playerTwoScore = self.roundScore + self.playerTwoScore;
                 self.playerLabel.text = @"Player 1 is up";
-                self.view.backgroundColor = [UIColor yellowColor];
+                self.imageView.image = [UIImage imageNamed:@"dark_green_felt"];
+                self.playerLabel.backgroundColor = [UIColor greenColor];
+                self.playerLabel.textColor = [UIColor blackColor];
             }
             self.playerOneScoring = !self.playerOneScoring;
             for (DieLabel *label in self.labelCollection) {
-                label.backgroundColor = [UIColor redColor];
+                label.dieSelected = NO;
                 [label rollDice];
             }
+            self.rollButton.enabled = NO;
         }
     }
 }
-
-//-(void)determineWinner {
-//
-//}
-
-// Need to enable and disable the roll button until they select one label
-
-// Need to display whose turn it is
 
 @end
