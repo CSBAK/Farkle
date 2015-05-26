@@ -27,7 +27,7 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="HSj-5w-VHE"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player 1 is up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bjB-sZ-9x6">
@@ -47,7 +47,7 @@
                                     <constraint firstAttribute="height" constant="21" id="GC7-LA-2Uc"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oSR-hq-fgN" customClass="DieLabel">
@@ -131,6 +131,16 @@
                                     <action selector="onRollButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="opH-G8-EPP"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Images created by John McClelland" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iAa-hE-Mqf">
+                                <rect key="frame" x="22" y="527" width="276" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="276" id="1OT-nk-YaN"/>
+                                    <constraint firstAttribute="height" constant="21" id="qDB-l9-3HS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -141,6 +151,7 @@
                             <constraint firstItem="Jig-ge-CBD" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="12" id="DUG-Gk-tzN"/>
                             <constraint firstItem="uoC-lv-tff" firstAttribute="leading" secondItem="oSR-hq-fgN" secondAttribute="trailing" constant="21" id="HIv-CO-Y44"/>
                             <constraint firstItem="p7l-G9-xhE" firstAttribute="leading" secondItem="wKE-B0-DaI" secondAttribute="trailing" constant="21" id="I9c-nr-aUo"/>
+                            <constraint firstAttribute="centerX" secondItem="iAa-hE-Mqf" secondAttribute="centerX" id="IdR-b3-cjo"/>
                             <constraint firstItem="bjB-sZ-9x6" firstAttribute="top" secondItem="bMh-su-6aS" secondAttribute="bottom" constant="28" id="JmO-Mp-EWj"/>
                             <constraint firstAttribute="centerX" secondItem="bjB-sZ-9x6" secondAttribute="centerX" id="M38-7j-EPh"/>
                             <constraint firstItem="IFc-2k-3VH" firstAttribute="baseline" secondItem="p7l-G9-xhE" secondAttribute="baseline" id="O9h-T8-6tD"/>
@@ -152,6 +163,7 @@
                             <constraint firstItem="oSR-hq-fgN" firstAttribute="leading" secondItem="WN8-th-nB8" secondAttribute="trailing" constant="21" id="k2x-kt-M7j"/>
                             <constraint firstItem="w5f-SD-zE3" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="kVn-qe-Eyb"/>
                             <constraint firstItem="bMh-su-6aS" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="l5d-St-Xfb"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="iAa-hE-Mqf" secondAttribute="bottom" constant="20" id="oLu-qi-sJ8"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="w5f-SD-zE3" secondAttribute="bottom" id="oon-oK-fpf"/>
                             <constraint firstAttribute="centerX" secondItem="kCx-Pb-TUx" secondAttribute="centerX" id="siG-FQ-LvL"/>
                             <constraint firstItem="Jig-ge-CBD" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="vSi-d7-nHl"/>
@@ -213,7 +225,11 @@ Rules -
 
 2) You must select at least one die to keep for the round before you can roll again
 
-3) Once all six die are selected, it becomes the next player's turn</string>
+3) Once all six die are selected, it becomes the next player's turn
+
+
+
+</string>
                                         <attributes>
                                             <font key="NSFont" size="18" name="HelveticaNeue"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
