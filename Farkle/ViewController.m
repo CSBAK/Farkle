@@ -18,6 +18,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *playerLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
+@property UIDynamicAnimator *dynamicAnimator;
+@property BOOL areButtonsFanned;
+
 @property BOOL playerOneScoring;
 @property int playerOneScore;
 @property int playerOneTotal;
@@ -49,6 +52,10 @@
     self.playerLabel.layer.borderColor = [[UIColor grayColor]CGColor];
     self.imageView.image = [UIImage imageNamed:@"dark_green_felt"];
     self.playerLabel.backgroundColor = [UIColor greenColor];
+    // Gesture stuff
+//    [self.rollButton addTarget:self action:@selector(fanButtons:) forControlEvents:UIControlEventTouchUpInside];
+//    self.dynamicAnimator = [[UIDynamicAnimator alloc]initWithReferenceView:self.view];
+//    self.areButtonsFanned = NO;
 }
 
 
@@ -68,6 +75,8 @@
     label.backgroundColor = [UIColor colorWithPatternImage:img];
     label.dieSelected = YES;
     self.rollButton.enabled = YES;
+//    [self.rollButton setTitle:@"Gather Dice" forState:UIControlStateDisabled];
+//    [self.rollButton setTitle:@"Roll" forState:UIControlStateNormal];
     [self updateScore];
 }
 
@@ -145,28 +154,7 @@
 
 // /////////////////////////////////// Gestures //////////////////////////////////////////////////
 
-//- (void)viewAppears {
-//    [super viewDidLoad];
-//    self.menuButtonOne = [self createButtonWithTitle:@"1"];
-//    [self.mainButton addTarget:self action:@selector(fanButtons:) forControlEvents:UIControlEventTouchUpInside];
-//    self.dynamicAnimator = [[UIDynamicAnimator alloc]initWithReferenceView:self.view];
-//    self.areButtonsFanned = NO;
-//}
-//
-//-(UIButton *)createButtonWithTitle:(NSString *)title {
-//    CGRect frame = self.view.frame;
-//    UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(frame.size.width - 50, frame.size.height - 50, 50, 50)];
-//    button.layer.cornerRadius = button.bounds.size.width / 2;
-//    button.layer.borderWidth = 1.0;
-//    button.backgroundColor = [UIColor blueColor];
-//    button.layer.borderColor = [[UIColor blackColor]CGColor];
-//    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//    [button setTitle:title forState:UIControlStateNormal];
-//
-//    [self.view addSubview:button];
-//    return button;
-//}
-//
+
 //-(void)fanButtons:(id)sender {
 //    [self.dynamicAnimator removeAllBehaviors];
 //    if (self.areButtonsFanned) {
@@ -181,16 +169,17 @@
 //    CGPoint point;
 //    UISnapBehavior *snapBehavior;
 //
-//    point = CGPointMake(self.mainButton.frame.origin.x - 50, self.mainButton.frame.origin.y + 20);
-//    snapBehavior = [[UISnapBehavior alloc]initWithItem:self.menuButtonOne snapToPoint:point];
+//    point = CGPointMake(self.rollButton.frame.origin.x - 50, self.rollButton.frame.origin.y + 20);
+//    snapBehavior = [[UISnapBehavior alloc]initWithItem:self.rollButton snapToPoint:point];
+//    //                                              (supposed to be label)
 //    [self.dynamicAnimator addBehavior:snapBehavior];
 //}
 //
 //-(void)fanIn {
 //    UISnapBehavior *snapBehavior;
-//
-//    snapBehavior = [[UISnapBehavior alloc]initWithItem:self.menuButtonOne snapToPoint:self.mainButton.center];
+//    //                                               (supposed to be label)
+//    snapBehavior = [[UISnapBehavior alloc]initWithItem:self.rollButton snapToPoint:self.rollButton.center];
 //    [self.dynamicAnimator addBehavior:snapBehavior];
 //}
-
+//
 @end
